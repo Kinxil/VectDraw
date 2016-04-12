@@ -7,7 +7,8 @@
 //
 
 #include "Shapes.hpp"
-
+#include "CImage.h"
+#include "CPixel.h"
 //*****************************************SHAPES*****************************************************//
 
 //Constructor
@@ -93,7 +94,7 @@ Circle::~Circle(){
     Circle::radius = 0;
 };
 //Drawing function
-Circle::drawshape(){ // Draw a circle
+void Circle::drawshapeC(CImage *img){ // Draw a circle
 
     
     
@@ -125,8 +126,33 @@ int Rectangle::getWidth(){
 
 
 //Drawing function
-Rectangle::drawshape(){ // Draw a Rectangle
+void Rectangle::drawshapeR(CImage *img){ // Draw a Rectangle
     
+    int x    = Rectangle::getX();
+    int y    = Rectangle::getY();
+    int lg   = Rectangle::getLength();
+    int larg = Rectangle::getWidth();
+    int r    = Shapes::colorR();
+    int g    = Shapes::colorG();
+    int b    = Shapes::colorB();
+    int trans= Shapes::getTrans();
+    RGB colortemp;
+    colortemp.R= r;
+    colortemp.G= g;
+    colortemp.B= b;
+    
+    
+    Line ln1(x,y,colortemp,trans,x+lg,y);
+    ln1.drawshapeL(img);
+    
+    Line ln2(x,y,colortemp,trans,x,y+larg);
+    ln2.drawshapeL(img);
+    
+    Line ln3(x,y+larg,colortemp,trans,x+lg, y+larg);
+    ln3.drawshapeL(img);
+    
+    Line ln4(x+lg, y,colortemp,trans,x+lg,y+larg);
+    ln4.drawshapeL(img);
     
     
 }
@@ -153,8 +179,41 @@ Line::~Line(){
 };
 
 //Drawing function
-Line::drawshape(){ // Draw a Point
+void Line::drawshapeL(CImage *img){ // Draw a Point
     
+    int x1    = Line::getX();
+    int y1    = Line::getY();
+    int x2    = Line::getX2();
+    int y2    = Line::getY2();
+    int r     = Shapes::colorR();
+    int g     = Shapes::colorG();
+    int b     = Shapes::colorB();
+    int trans = Shapes::getTrans();
+    int x     = x1;
+    int y     = y1;
+    
+    RGB colortemp2;
+    colortemp2.R= r;
+    colortemp2.G= g;
+    colortemp2.B= b;
+    
+    Point point(x,y,colortemp2, trans); //Initialize a point
+    
+    double k;
+    
+    point.SetX(x);
+    point.SetY(y);
+    point.drawshapeP(img);
+    
+    
+    for (k=0; k<1; k=k+0.001){
+        x=k*x1+(1-k)*x2;
+        y=k*y1+(1-k)*y2;
+        
+        point.SetX(x);
+        point.SetY(y);
+        point.drawshapeP(img);
+    }
     
 };
 
@@ -165,13 +224,40 @@ Point::Point(int X, int Y, struct RGB color, int trans):Shapes(X, Y, color, tran
 
 };
 
+//COORDINATES SETTERS
+void Point::SetX(int x){
+    Shapes::X=x;
+};
+
+void Point::SetY(int y){
+    Shapes::Y=y;
+};
+
+//COORDINATES GETTERS
+int Point::GetX(){
+    return X;
+};
+
+int Point::GetY(){
+    return Y;
+};
 //Destructor
 Point::~Point(){
 };
 
 //Drawing function
-Point::drawshape(){ // Draw a Point
+void Point::drawshapeP(CImage *img){ // Draw a Point
+    int x=Point::GetX();
+    int y=Point::GetY();
     
+    int r=Shapes::colorR();
+    int g=Shapes::colorG();
+    int b=Shapes::colorB();
+    
+    CPixel * p = img->getPixel(x,y);
+    p->Red(r);
+    p->Green(g);
+    p->Blue(b);
     
 
 };

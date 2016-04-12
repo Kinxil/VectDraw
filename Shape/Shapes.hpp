@@ -10,7 +10,8 @@
 #define Shapes_hpp
 
 #include <stdio.h>
-
+#include "CImage.h"
+#include "CPixel.h"
 
 struct RGB {
     
@@ -19,19 +20,20 @@ struct RGB {
     int B;
 };
 
+
 //*****************************************SHAPES*****************************************************//
 
 class Shapes {
 
 private:
-    int X;
-    int Y;
+    
     struct RGB color;
     int trans;
     
 public:
-    
-    virtual void drawshape();
+    int X;
+    int Y;
+    // virtual void drawshape();
     int colorR();
     int colorG();
     int colorB();
@@ -55,7 +57,7 @@ private:
 
 public:
     
-    virtual void drawshape();
+    void drawshapeR(CImage *img);
     int getLength();
     int getWidth();
     Rectangle(int X, int Y, struct RGB color,int trans, int Length,int Width); // New rectangle
@@ -72,7 +74,7 @@ private:
     
 public:
     
-    virtual void drawshape(); // Draw a circle
+    void drawshapeC(CImage *img); // Draw a circle
     int getRadius();
     Circle(int X, int Y, struct RGB color, int trans, int radius); // New circle
     ~Circle(); // Delete
@@ -82,11 +84,16 @@ public:
 //*****************************************POINT*****************************************************//
 
 class Point : public Shapes{
-
-    //The point's coordinates are in class Shape : X and Y
-public:
+private:
+    int X;
+    int Y;
     
-    virtual void drawshape(); // Draw a point
+public:
+    int GetX();
+    int GetY();
+    void SetX(int x);
+    void SetY(int y);
+    void drawshapeP(CImage *img); // Draw a point
     Point(int X, int Y, struct RGB color, int trans); // New point
     ~Point(); // Delete
 };
@@ -104,7 +111,7 @@ private:
 public:
     int getX2();
     int getY2();
-    virtual void drawshape(); // Draw a line
+    void drawshapeL(CImage *img); // Draw a line
     Line(int X1, int Y1, struct RGB color, int trans, int X2, int Y2);// New line
     ~Line(); // Delete
 };
