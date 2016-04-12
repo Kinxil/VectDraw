@@ -45,6 +45,22 @@ int Shapes::colorB(){
     return Shapes::color.B;
 };
 
+//COORDINATES GETTERS
+
+int Shapes::getX(){
+    return Shapes::X;
+};
+int Shapes::getY(){
+    return Shapes::Y;
+};
+
+//TRANSPARANCY GETTER
+
+int Shapes::getTrans(){
+    return Shapes::trans;
+};
+
+
 // COLOR SETTERS
 
 void Shapes::colorR(int Red){
@@ -66,6 +82,11 @@ void Shapes::colorB(int Blue){
 Circle::Circle(int X, int Y, struct RGB color, int trans, int radius):Shapes(X, Y, color, trans){
     Circle::radius = radius;
 };
+
+//Radius Getter
+int Circle::getRadius(){
+    return radius;
+}
 
 //Destructor
 Circle::~Circle(){
@@ -92,6 +113,17 @@ Rectangle::~Rectangle(){
     Rectangle::Width=0;
 };
 
+// Length and Width Getters
+int Rectangle::getLength(){
+    return Length;
+};
+
+int Rectangle::getWidth(){
+    return Width;
+};
+
+
+
 //Drawing function
 Rectangle::drawshape(){ // Draw a Rectangle
     
@@ -106,13 +138,22 @@ Line::Line(int X, int Y, struct RGB color, int trans, int X2, int Y2):Shapes(X, 
     
 };
 
+//COORDINATES getter
+
+int Line::getX2(){
+    return X2;
+}
+
+int Line::getY2(){
+    return Y2;
+}
+
 //Destructor
 Line::~Line(){
 };
 
 //Drawing function
 Line::drawshape(){ // Draw a Point
-    
     
     
 };

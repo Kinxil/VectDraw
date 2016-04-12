@@ -35,6 +35,9 @@ public:
     int colorR();
     int colorG();
     int colorB();
+    int getX();
+    int getY();
+    int getTrans();
     void colorR(int Red);
     void colorG(int Green);
     void colorB(int Blue);
@@ -53,6 +56,8 @@ private:
 public:
     
     virtual void drawshape();
+    int getLength();
+    int getWidth();
     Rectangle(int X, int Y, struct RGB color,int trans, int Length,int Width); // New rectangle
     ~Rectangle(); // Delete
 };
@@ -68,6 +73,7 @@ private:
 public:
     
     virtual void drawshape(); // Draw a circle
+    int getRadius();
     Circle(int X, int Y, struct RGB color, int trans, int radius); // New circle
     ~Circle(); // Delete
 };
@@ -96,7 +102,8 @@ private:
     int Y2;
     
 public:
-    
+    int getX2();
+    int getY2();
     virtual void drawshape(); // Draw a line
     Line(int X1, int Y1, struct RGB color, int trans, int X2, int Y2);// New line
     ~Line(); // Delete
