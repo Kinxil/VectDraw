@@ -1,5 +1,5 @@
-#ifndef DESSIN_H
-#define DESSIN_H
+#ifndef DRAW_H
+#define DRAW_H
 
 #include <vector>
 #include <string>
@@ -20,4 +20,4 @@ public:
   void drawShapes();
 };
 
-#endif // DESSIN_H
+#endif // DRAW_H
