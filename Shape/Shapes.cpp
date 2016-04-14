@@ -273,3 +273,6 @@ void Dot::drawshape(CImage *img){ // Draw a Point
     
 
 }
+
+//Rnew = R*trans/255 + Rimage*(1-trans)/255
+//Calcul avec transparence

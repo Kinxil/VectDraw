@@ -42,7 +42,7 @@ void Draw::loadFromFile(string f) {
         if(buf[0].find("DOT")!=string::npos){ //Shape match = Dot
             loadBuffer(buf,4,file); //Load values
             color = str2color(buf[3]);
-            Dot dotBuf(stoi(buf[1]), stoi(buf[2]), color, stoi(buf[4]));//Create Dot
+            Dot* dotBuf = new Dot(stoi(buf[1]), stoi(buf[2]), color, stoi(buf[4]));//Create Dot
             shapes.push_back(dotBuf);//Store Dot
           }
 
@@ -50,14 +50,14 @@ void Draw::loadFromFile(string f) {
         else if(buf[0].find("LINE")!=string::npos){
             loadBuffer(buf,6, file);
             color = str2color(buf[3]);
-            Line lineBuf(stoi(buf[1]), stoi(buf[2]), color, stoi(buf[4]),stoi(buf[5]), stoi(buf[6]));
+            Line* lineBuf = new Line(stoi(buf[1]), stoi(buf[2]), color, stoi(buf[4]),stoi(buf[5]), stoi(buf[6]));
             shapes.push_back(lineBuf);
           }
 
         else if(buf[0].find("RECTANGLE")!=string::npos){
             loadBuffer(buf,6, file);
             color = str2color(buf[3]);
-            Rectangle rectBuf(stoi(buf[1]), stoi(buf[2]), color, stoi(buf[4]),stoi(buf[5]), stoi(buf[6]));
+            Rectangle *rectBuf = new Rectangle(stoi(buf[1]), stoi(buf[2]), color, stoi(buf[4]),stoi(buf[5]), stoi(buf[6]));
             shapes.push_back(rectBuf);
           }
 
@@ -71,7 +71,7 @@ void Draw::loadFromFile(string f) {
         else if(buf[0].find("CIRCLE")!=string::npos){
             loadBuffer(buf,5, file);
             color = str2color(buf[3]);
-            Circle circleBuf(stoi(buf[1]), stoi(buf[2]), color, stoi(buf[4]),stoi(buf[5]));
+            Circle *circleBuf = new Circle(stoi(buf[1]), stoi(buf[2]), color, stoi(buf[4]),stoi(buf[5]));
             shapes.push_back(circleBuf);
           }
       }
@@ -80,10 +80,12 @@ void Draw::loadFromFile(string f) {
     cout << "Could not find file\n";
 }
 
-void Draw::drawShapes()
+void Draw::drawShapes(CImage *img)
 {
+  //Shapes *buf;
   for(unsigned int i=0; i<shapes.size(); i++)
     {
-      //shapes[i].draw();
+      //buf = shapes[i];
+      shapes[i]->drawshape(img);
     }
 }
