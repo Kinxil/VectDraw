@@ -7,10 +7,10 @@
 using namespace std;
 
 #include "./Format/CBitmap.h"
-//#include "./Dessin/dessin.h"
-
+#include "./Draw/draw.h"
 
 int main(int argc, char * argv[]) {
+  //Default program
   cout << "(II) P_Bitmap exection start (" << __DATE__ << " - " << __TIME__ << ")" << endl;
   cout << "(II) + Number of arguments = " << argc << endl;
 
@@ -25,10 +25,21 @@ int main(int argc, char * argv[]) {
       p->RGB(255,255,255);
     }
 
+  //Tests
+  Draw newdraw;
+  newdraw.loadFromFile("formes.txt");
+
+  RGB col={255,0,255};
+  Circle* c = new Circle(50,50,col,50,25);
+  c->drawshapeC(img);
+  Rectangle *rec = new Rectangle(100,100,col,50,20,20);
+  rec->drawshapeR(img);
+  Line *li = new Line(150,150,col,50,170,190);
+  li->drawshapeL(img);
+
   image->setImage( img );
   cout << "(II) CBitmap image saving" << endl;
   image->SaveBMP(filename2);
-
   return 1;
 }
 

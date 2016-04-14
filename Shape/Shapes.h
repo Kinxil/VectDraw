@@ -6,19 +6,20 @@
 //  Copyright © 2016 samir. All rights reserved.
 //
 
-#ifndef Shapes_hpp
-#define Shapes_hpp
+#ifndef Shapes_h
+#define Shapes_h
 
 #include <stdio.h>
-#include "CImage.h"
-#include "CPixel.h"
+#include <math.h>
+#include "../Image/CImage.h"
+#include "../Image/CPixel.h"
 
-struct RGB {
+typedef struct RGB {
     
     int R;
     int G;
     int B;
-};
+}RGB;
 
 
 //*****************************************SHAPES*****************************************************//
@@ -39,6 +40,8 @@ public:
     int colorB();
     int getX();
     int getY();
+    void setX(int x);
+    void setY(int y);
     int getTrans();
     void colorR(int Red);
     void colorG(int Green);
@@ -83,19 +86,13 @@ public:
 
 //*****************************************POINT*****************************************************//
 
-class Point : public Shapes{
+class Dot : public Shapes{
 private:
-    int X;
-    int Y;
     
 public:
-    int GetX();
-    int GetY();
-    void SetX(int x);
-    void SetY(int y);
     void drawshapeP(CImage *img); // Draw a point
-    Point(int X, int Y, struct RGB color, int trans); // New point
-    ~Point(); // Delete
+    Dot(int X, int Y, struct RGB color, int trans); // New point
+    ~Dot(); // Delete
 };
 
 
@@ -116,5 +113,5 @@ public:
     ~Line(); // Delete
 };
 
-#endif /* Shapes_hpp */
+#endif /* Shapes_h */
 
