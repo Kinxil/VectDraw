@@ -87,6 +87,9 @@ void Shapes::colorB(int Blue){
     Shapes::color.B = Blue;
 }
 
+void Shapes::drawshape(CImage *img){
+ //Does nothing !
+}
 
 //*****************************************CIRCLE*****************************************************//
 
@@ -106,7 +109,7 @@ Circle::~Circle(){
 }
 
 //Drawing function
-void Circle::drawshapeC(CImage *img){ // Draw a circle
+void Circle::drawshape(CImage *img){ // Draw a circle
   int i,j;
   RGB col={255,0,255};
 
@@ -121,7 +124,7 @@ void Circle::drawshapeC(CImage *img){ // Draw a circle
       for(j=Y-radius; j<Y+radius; j++)
         if((pow((i-X),2)+pow((j-Y),2)) <= radius*radius) { //Dans le cercle
           Dot* dot1 = new Dot(i,j,col,getTrans());
-          dot1->drawshapeP(img);
+          dot1->drawshape(img);
           }
 }
 
@@ -151,7 +154,7 @@ int Rectangle::getWidth(){
 
 
 //Drawing function
-void Rectangle::drawshapeR(CImage *img){ // Draw a Rectangle
+void Rectangle::drawshape(CImage *img){ // Draw a Rectangle
     
     int x    = getX();
     int y    = getY();
@@ -168,16 +171,16 @@ void Rectangle::drawshapeR(CImage *img){ // Draw a Rectangle
     
     
     Line ln1(x,y,colortemp,trans,x+lg,y);
-    ln1.drawshapeL(img);
+    ln1.drawshape(img);
     
     Line ln2(x,y,colortemp,trans,x,y+larg);
-    ln2.drawshapeL(img);
+    ln2.drawshape(img);
     
     Line ln3(x,y+larg,colortemp,trans,x+lg, y+larg);
-    ln3.drawshapeL(img);
+    ln3.drawshape(img);
     
     Line ln4(x+lg, y,colortemp,trans,x+lg,y+larg);
-    ln4.drawshapeL(img);
+    ln4.drawshape(img);
     
     
 }
@@ -205,7 +208,7 @@ Line::~Line(){
 }
 
 //Drawing function
-void Line::drawshapeL(CImage *img){ // Draw a Point
+void Line::drawshape(CImage *img){ // Draw a Point
     
     int x1    = getX();
     int y1    = getY();
@@ -229,7 +232,7 @@ void Line::drawshapeL(CImage *img){ // Draw a Point
     
     dot.setX(x);
     dot.setY(y);
-    dot.drawshapeP(img);
+    dot.drawshape(img);
     
     
     for (k=0; k<1; k=k+0.001){
@@ -239,7 +242,7 @@ void Line::drawshapeL(CImage *img){ // Draw a Point
         cout << x << " " << y << endl;
         dot.setX(x);
         dot.setY(y);
-        dot.drawshapeP(img);
+        dot.drawshape(img);
     }
     
 }
@@ -256,7 +259,7 @@ Dot::~Dot(){
 }
 
 //Drawing function
-void Dot::drawshapeP(CImage *img){ // Draw a Point
+void Dot::drawshape(CImage *img){ // Draw a Point
     int x=getX();
     int y=getY();
     

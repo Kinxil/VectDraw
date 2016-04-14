@@ -31,11 +31,11 @@ int main(int argc, char * argv[]) {
 
   RGB col={255,0,255};
   Circle* c = new Circle(50,50,col,50,25);
-  c->drawshapeC(img);
+  c->drawshape(img);
   Rectangle *rec = new Rectangle(100,100,col,50,20,20);
-  rec->drawshapeR(img);
+  rec->drawshape(img);
   Line *li = new Line(150,150,col,50,170,190);
-  li->drawshapeL(img);
+  li->drawshape(img);
 
   image->setImage( img );
   cout << "(II) CBitmap image saving" << endl;

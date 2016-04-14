@@ -46,6 +46,8 @@ public:
     void colorR(int Red);
     void colorG(int Green);
     void colorB(int Blue);
+
+    virtual void drawshape(CImage *img);
     Shapes(int X, int Y, struct RGB color,int trans);// Set a new shape
     ~Shapes();// Delete
 };
@@ -60,7 +62,7 @@ private:
 
 public:
     
-    void drawshapeR(CImage *img);
+    void drawshape(CImage *img);
     int getLength();
     int getWidth();
     Rectangle(int X, int Y, struct RGB color,int trans, int Length,int Width); // New rectangle
@@ -77,7 +79,7 @@ private:
     
 public:
     
-    void drawshapeC(CImage *img); // Draw a circle
+    void drawshape(CImage *img); // Draw a circle
     int getRadius();
     Circle(int X, int Y, struct RGB color, int trans, int radius); // New circle
     ~Circle(); // Delete
@@ -90,7 +92,7 @@ class Dot : public Shapes{
 private:
     
 public:
-    void drawshapeP(CImage *img); // Draw a point
+    void drawshape(CImage *img); // Draw a point
     Dot(int X, int Y, struct RGB color, int trans); // New point
     ~Dot(); // Delete
 };
@@ -108,7 +110,7 @@ private:
 public:
     int getX2();
     int getY2();
-    void drawshapeL(CImage *img); // Draw a line
+    void drawshape(CImage *img); // Draw a line
     Line(int X1, int Y1, struct RGB color, int trans, int X2, int Y2);// New line
     ~Line(); // Delete
 };
