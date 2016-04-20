@@ -1,3 +1,4 @@
+////////////////////////////////////
 //
 //  Shapes.hpp
 //  Dessin vectoriel
@@ -93,6 +94,23 @@ public:
   ~FSquare();
 };
 
+//*****************************************Polygon*****************************************************//
+
+class RegularPolygon : public Shapes{ // As its name alreday mentionned it, only regular polygons are included in this class (Triangles included)
+private:
+    //The minimal's coordinates Xmin and Ymin are in class Shape : X and Y
+    int R; // Defines the size of the polygon
+    int N; // Defines the number of Vertices
+
+public:
+
+    void drawshape(CImage *img);
+    int getR();
+    int getN();
+    RegularPolygon(int X, int Y, struct RGB color, int trans, int R, int N); // New polygon
+    ~RegularPolygon(); // Delete
+};
+
 //*****************************************CIRCLE*****************************************************//
 
 class Circle : public Shapes{
@@ -142,4 +160,3 @@ public:
 };
 
 #endif /* Shapes_h */
-
