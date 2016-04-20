@@ -22,13 +22,15 @@ int main(int argc, char * argv[]) {
   CImage   *img = new CImage(200, 200);
 
   //Tests
-  Draw newdraw;
-  newdraw.loadFromFile("formes.txt");
-  newdraw.drawShapes(img);
+  Draw *newdraw = new Draw();
+  newdraw->loadFromFile("formes.txt");
+  newdraw->drawShapes(img);
 
   image->setImage( img );
   cout << "(II) CBitmap image saving" << endl;
   image->SaveBMP(filename2);
+
+  delete newdraw;
   return 1;
 }
 

@@ -22,9 +22,11 @@ class CImage{
 private:
     CLigne** liste;
     int taille;
+    int h;
+    int l;
 
 public:
-    CImage(int hauteur, int largeur);
+    CImage(int _hauteur, int _largeur);
 
     ~CImage();
 
@@ -33,6 +35,10 @@ public:
     CLigne* getLigne(int position);
 
     CPixel* getPixel(int posX, int posY);
+
+    int largeur();
+    int hauteur();
+    bool isInPicture(int x, int y);
 };
 
 #endif /*CIMAGE_H_*/

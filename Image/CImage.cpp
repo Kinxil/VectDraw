@@ -9,13 +9,15 @@
 
 #include "CImage.h"
 
-CImage::CImage(int hauteur, int largeur){
+CImage::CImage(int _hauteur, int _largeur){
     //cout << "Instanciation des lignes... " << taille << endl;
-    taille = hauteur;
+    taille = _hauteur;
     liste = (CLigne**)new CLigne**[taille];
     for(int i=0; i<taille; i++){
-        liste[i] = new CLigne(largeur);
+        liste[i] = new CLigne(_largeur);
     }
+    l=_largeur;
+    h=_hauteur;
 }
 
 CImage::~CImage(){
@@ -39,4 +41,18 @@ CPixel* CImage::getPixel(int posX, int posY){
     CLigne* ligne =  getLigne( posY );
     if( ligne == NULL) return NULL;
     return ligne->getPixel(posX);
+}
+
+int CImage::largeur(){
+  return l;
+}
+
+int CImage::hauteur(){
+  return h;
+}
+
+bool CImage::isInPicture(int x, int y){
+  if(x<0||x>=l||y<0||y>=h)
+    return false;
+  return true;
 }
