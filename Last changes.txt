@@ -1,5 +1,5 @@
 20/04/2016 Changes 
-- Added some functions and class for empty and full shapes (FRectable, Disc, ...)
+- Added some functions and class for empty and full shapes (FRectangle, Disc, ...)
 - Added some examples to formes.txt
 - Big clean up on Shape.h and Shape.cpp (We forgot about using the key word protected which make 
 attributes directly usable only by derived classes (getters setters no longer needed between subclasses,
